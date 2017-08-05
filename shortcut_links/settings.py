@@ -24,7 +24,10 @@ SECRET_KEY = 'i$1q_h$5iao*hcxggc$%z=#z2c_(*sp0+kbh8k$$0aoxa23rd-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'portfoliodevi.pythonanywhere.com',
+    '127.0.0.1',
+]
 
 # Application definition
 
