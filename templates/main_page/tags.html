@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h4>
+        <small>Теги</small>
+    </h4>
+    <hr>
+    <div class="large_label">
+        {% for tag in ordered_tags %}
+            <h5><a href="{% url 'tags_detail' pk=tag.pk %}"><span class="label label-success">{{ tag.name }}</span></a>
+            </h5>
+        {% endfor %}
+    </div>
+    <br><br>
+{% endblock content %}
+

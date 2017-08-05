@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h4>
+        <small>Ссылка</small>
+    </h4>
+    <hr>
+
+    <h2>{{ links.original }}</h2>
+    <h3><span class="glyphicon glyphicon-scissors"></span> {{ links.shortcut}}</h3>
+
+    <h5><span class="glyphicon glyphicon-time"></span> Post by {{ links.created_date }} - <a href="#">{{ links.author }}</a>
+    </h5>
+
+    <h5><span class="label label-success">{{ links.tag }}</span></h5>
+        <br>
+        <p>{{ links.description }}</p>
+        <br>
+{% endblock content %}
