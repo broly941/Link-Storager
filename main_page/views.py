@@ -1,11 +1,11 @@
 import operator
+import requests
+import json
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Links, Tags
 from .forms import LinksForm
 
-import requests
-import json
 
 GOOGLE_URL_SHORTEN_API = 'AIzaSyCeZMN-uyaLrbEACHreeLJLFzGBi2LvoJY'
 
