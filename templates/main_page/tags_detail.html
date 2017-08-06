@@ -7,7 +7,7 @@
 
     {% for link in tags.get_links %}
         <hr>
-        <h2><a href="{% url 'links_detail' pk=link.pk %}">{{ link.original }}</a></h2>
+        <h2><a href="{% url 'links_detail' pk=link.pk %}">{{ link.shortcut }}</a></h2>
 
         <h5><span class="glyphicon glyphicon-time"></span> Post by {{ link.created_date }} - <a href="#">{{ link.author }}</a></h5>
         <br>
