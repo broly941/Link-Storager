@@ -1,7 +1,83 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
+    <h4>
+        <small>Создать ссылку</small>
+    </h4>
+    <hr>
 
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form.original }}
+        </div>
+
+        <div class="form-group">
+            {{ form.description }}
+        </div>
+
+        <div class="form-group">
+            {{ form.tag }}
+        </div>
+
+        <div class="form-group">
+            <button
+                type="submit"
+                class="btn btn-success">Создать</button>
+        </div>
+    </form>
 {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#        <div class="form-group">#}
+{#            <label for="linkInput">Ссылка</label>#}
+{#            <input name="{{ form.original.name }}"#}
+{#                   type="text"#}
+{#                   class="form-control"#}
+{#                   id="linkInput"#}
+{#                   placeholder="Введите ссылку...">#}
+{#        </div>#}
+{#        <fieldset disabled>#}
+{#            <div class="form-group">#}
+{#                <label for="linkDisabledInput">Сокращённая</label>#}
+{#                <input#}
+{#                    type="text"#}
+{#                    id="linkDisabledInput"#}
+{#                    class="form-control">#}
+{#            </div>#}
+{#        </fieldset>#}
+{#        <div class="form-group">#}
+{#            <label for="descriptionTextArea">Описание</label>#}
+{#            <textarea#}
+{#                name="{{ form.description.name }}"#}
+{#                class="form-control"#}
+{#                id="descriptionTextArea"#}
+{#                rows="4"#}
+{#                placeholder="Дайте описание..."></textarea>#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <label for="tagSelect">Тег:</label>#}
+{#            <select#}
+{#                name="{{ form.tag.name }}"#}
+{#                class="form-control"#}
+{#                id="tagSelect">#}
+{#                {% for tag in tags %}#}
+{#                    <option>{{ tag.name }}</option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+{#        </div>#}
 

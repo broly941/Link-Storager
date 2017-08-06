@@ -1,7 +1,11 @@
 <ul class="nav nav-pills nav-stacked">
     <li class="active"><a href="/">Главная</a></li>
-    <li><a href="/create_link/">Создать</a></li>
-    <li><a href="#">Статистика</a></li>
+
+    {% if user.is_authenticated %}
+        <li><a href="/create_link/"> Создать</a></li>
+        <li><a href="#">Статистика</a></li>
+    {% endif %}
+
     <li><a href="/tags/">Теги</a></li>
     <li class="nav-divider"></li>
     <li><a href="#"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
