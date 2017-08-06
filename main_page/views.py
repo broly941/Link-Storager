@@ -7,6 +7,7 @@ from .forms import LinksForm
 
 def main_page(request):
     links = Links.objects.all()
+    ordered_links = sorted(links, key=operator.attrgetter('created_date'), reverse=True)
     return render(request, 'main_page/main_page.html', locals())
 
 

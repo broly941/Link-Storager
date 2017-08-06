@@ -1,15 +1,19 @@
-/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {
-    height: 1500px
+    height: 859px;
+    margin-top: 15px;
 }
 
-/* Set gray background color and 100% height */
 .sidenav {
-    background-color: #f1f1f1;
+    /*background-color: #f1f1f1;*/
     height: 100%;
 }
 
-/* Set black background color, white text and some padding */
+.content-setting {
+    padding-left: 20px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
 footer {
     background-color: #555;
     color: white;
@@ -27,6 +31,11 @@ footer {
         height: auto;
     }
 }
+
 .large_label h5 {
     font-size: 20px;
+}
+
+.btn-success {
+    font-size: 15px;
 }

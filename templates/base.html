@@ -17,17 +17,17 @@
 
 <div class="container-fluid">
     <div class="row content">
-        {% include 'sidebar.html' %}
-
-        <div class="col-sm-9">
-            {% block content %}
-            {% endblock %}
-
+        <div class="col-sm-2 sidenav">
+            {% include 'sidebar.html' %}
         </div>
 
+        <div class="col-sm-9 content-setting">
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
 </div>
- {% include 'footer.html' %}
+{% include 'footer.html' %}
 
 </body>
 </html>

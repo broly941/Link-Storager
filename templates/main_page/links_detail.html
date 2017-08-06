@@ -7,13 +7,16 @@
     <hr>
 
     <h2>{{ links.original }}</h2>
-    <h3><span class="glyphicon glyphicon-scissors"></span> {{ links.shortcut}}</h3>
+    <h3><span class="glyphicon glyphicon-scissors"></span> {{ links.shortcut }}</h3>
 
-    <h5><span class="glyphicon glyphicon-time"></span> Post by {{ links.created_date }} - <a href="#">{{ links.author }}</a>
+    <h5><span class="glyphicon glyphicon-time"></span> Post by {{ links.created_date }} - <a
+        href="#">{{ links.author }}</a>
     </h5>
 
-    <h5><span class="label label-success">{{ links.tag }}</span></h5>
+    {% if link.tag %}
+        <h5><span class="label label-success">{{ link.tag }}</span></h5>
         <br>
-        <p>{{ links.description }}</p>
-        <br>
+    {% endif %}
+    <p>{{ links.description }}</p>
+    <br>
 {% endblock content %}
