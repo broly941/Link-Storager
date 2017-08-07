@@ -3,27 +3,31 @@
 {% load static %}
 
 {% block content %}
-    <h4><small>Recent links</small></h4>
+    <h4>
+        <small>Recent links</small>
+    </h4>
     {% for link in ordered_links %}
         <hr>
 
         <h2><a href="{% url 'links_detail' pk=link.pk %}">{{ link.shortcut }}</a></h2>
-            </h5>
-        <h5><span class="glyphicon glyphicon-time"></span> Post by {{ link.created_date}} - <a href="../#">{{ link.author }}</a> </h5>
+        </h5>
+        <h5><span class="glyphicon glyphicon-time"></span> Post by {{ link.created_date }} - <a
+            href="../#">{{ link.author }}</a></h5>
 
         {% if link.tag %}
             <h5><span class="label label-success">{{ link.tag }}</span></h5>
             <br>
-{#            <span class="label label-danger">Food</span>#}
-{#            <span class="label label-primary">Ipsum</span>#}
-{#            <span class="label label-success">Lorem</span>#}
+            {#            <span class="label label-danger">Food</span>#}
+            {#            <span class="label label-primary">Ipsum</span>#}
+            {#            <span class="label label-success">Lorem</span>#}
 
         {% endif %}
         <p>{{ link.description }}</p>
         <br>
     {% endfor %}
-
-    {% include 'comments.html' %}
-    <br><br>
+    {% if user.is_authenticated %}
+        {% include 'comments.html' %}
+    {% endif %}
+    <br><br><br><br>
 {% endblock content %}
 

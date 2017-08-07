@@ -1,25 +1,29 @@
 import operator
-import requests
-import json
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Links, Tags
-from .forms import LinksForm
+from .forms import LinksForm, UserLoginForm
+from main_page.google_api import google_url_shorten
+from django.contrib.auth import (
+    authenticate,
+    get_user_model,
+    login,
+    logout
+    )
 
-
-GOOGLE_URL_SHORTEN_API = 'AIzaSyCeZMN-uyaLrbEACHreeLJLFzGBi2LvoJY'
 
 def main_page(request):
     links = Links.objects.all()
     ordered_links = sorted(links, key=operator.attrgetter('created_date'), reverse=True)
     return render(request, 'main_page/main_page.html', locals())
 
-
+# @login_required(login_url='/login/')
 def create_link(request):
     tags = Tags.objects.all()
     ordered_tags = sorted(tags, key=operator.attrgetter('name'))
 
-    form = LinksForm(request.POST)
+    form = LinksForm(request.POST or None)
     if form.is_valid():
         link = form.save(commit=False)
 
@@ -31,7 +35,6 @@ def create_link(request):
     else:
         form = LinksForm()
     return render(request, 'main_page/create_link.html', locals())
-
 
 def tags(request):
     tags = Tags.objects.all()
@@ -50,11 +53,20 @@ def links_detail(request, pk):
     links = get_object_or_404(Links, pk=pk)
     return render(request, 'main_page/links_detail.html', locals())
 
-def google_url_shorten(url):
-   req_url = 'https://www.googleapis.com/urlshortener/v1/url?key=' + GOOGLE_URL_SHORTEN_API
-   payload = {'longUrl': url}
-   headers = {'content-type': 'application/json'}
-   r = requests.post(req_url, data=json.dumps(payload), headers=headers)
-   resp = json.loads(r.text)
-   return resp['id']
+
+def login_view(request):
+    title = 'Авторизация'
+    form = UserLoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        login(request, user)
+    return render(request, 'main_page/login.html', locals())
+
+def register_view(request):
+    return render(request, 'main_page/', locals())
+
+def logout_view(request):
+    return render(request, 'main_page/login.html', locals())
 

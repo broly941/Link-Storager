@@ -1,5 +1,5 @@
 .row.content {
-    height: 859px;
+    height: 100%;
 }
 
 .sidenav {
@@ -12,14 +12,18 @@
 
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
 
+    /*min-height: 870px;*/
     /*background-color: #f1f1f1;*/
 }
 
 footer {
-    background-color: #555;
-    color: white;
+    position: fixed;
+    left: 0; bottom: 0;
     padding: 15px;
+    background: #555;
+    color: #ffffff;
     width: 100%;
 }
 

@@ -8,7 +8,13 @@
 
     <li><a href="/tags/">Теги</a></li>
     <li class="nav-divider"></li>
-    <li><a href="#"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
+    {% if not user.is_authenticated %}
+        <li><a href="/login/"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <li><a href="/logout/"><i class="glyphicon glyphicon-user"></i> Sign out</a></li>
+    {% endif %}
 </ul>
 {#<div class="input-group">#}
 {#    <input type="text" class="form-control" placeholder="Найти ссылку...">#}
