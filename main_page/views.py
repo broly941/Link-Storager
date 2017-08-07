@@ -55,7 +55,6 @@ def links_detail(request, pk):
 
 
 def login_view(request):
-    title = 'Авторизация'
     form = UserLoginForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get('username')
