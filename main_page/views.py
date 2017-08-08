@@ -1,16 +1,9 @@
 import operator
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Links, Tags
-from .forms import LinksForm, UserLoginForm
+from .forms import LinksForm
 from main_page.google_api import google_url_shorten
-from django.contrib.auth import (
-    authenticate,
-    get_user_model,
-    login,
-    logout
-    )
 
 
 def main_page(request):
@@ -53,19 +46,4 @@ def links_detail(request, pk):
     links = get_object_or_404(Links, pk=pk)
     return render(request, 'main_page/links_detail.html', locals())
 
-
-def login_view(request):
-    form = UserLoginForm(request.POST or None)
-    if form.is_valid():
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
-        user = authenticate(username=username, password=password)
-        login(request, user)
-    return render(request, 'main_page/login.html', locals())
-
-def register_view(request):
-    return render(request, 'main_page/', locals())
-
-def logout_view(request):
-    return render(request, 'main_page/login.html', locals())
 

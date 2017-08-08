@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import django.contrib.auth
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,12 +32,18 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    #django apps
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #third party apps
+    'registration',
+    'crispy_forms',
+    #my apps
     'main_page',
 ]
 
@@ -127,7 +132,16 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static", ),
 )
 
+LOGIN_REDIRECT_URL = 'main_page'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "static")
 
-LOGIN_REDIRECT_URL = 'main_page'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+#DJANGO REGISTRAION REDUX SETTINGS
+REGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
 
