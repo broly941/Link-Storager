@@ -1,23 +1,34 @@
 {% extends 'base.html' %}
 
 {% block title %}
-        Tag detail
+    Tag detail
+{% endblock %}
+
+{% block page_header %}
+    <h1>{{ tags.name }}</h1>
+    <hr class="small">
+    <span class="subheading">Something clever</span>
 {% endblock %}
 
 {% block content %}
-    <h4>
-        <small>{{ tags.name }}</small>
-    </h4>
-
     {% for link in tags.get_links %}
+        <div class="post-preview">
+            <a href="{% url 'links_detail' pk=link.pk %}">
+                <h2 class="post-title">
+                    {{ link.shortcut }}
+                </h2>
+                <h3 class="post-subtitle">
+                    {{ link.description }}
+                </h3>
+            </a>
+            <p class="post-meta">Posted by <a href="../#">{{ link.author }}</a> on {{ link.created_date }}</p>
+            {% if link.tag %}
+                <h4><span class="label label-success">{{ link.tag }}</span></h4>
+            {% endif %}
+        </div>
         <hr>
-        <h2><a href="{% url 'links_detail' pk=link.pk %}">{{ link.shortcut }}</a></h2>
-
-        <h5><span class="glyphicon glyphicon-time"></span> Post by {{ link.created_date }} - <a href="#">{{ link.author }}</a></h5>
-        <br>
-        <p>{{ link.description }}</p>
-        <br>
     {% endfor %}
-    <br><br><br>
+
+    {% include 'next_page.html' %}
 {% endblock content %}
 

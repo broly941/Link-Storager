@@ -1,9 +1,14 @@
 {% extends "base.html" %}
+
+{% load static %}
 {% load i18n %}
 
 {% block title %}{% trans "Logged out" %}{% endblock %}
 
+{% block page_header %}
+    <span class="subheading">Successfully logged out</span>
+{% endblock %}
+
 {% block content %}
-    <br>
-    <p>{% trans "Successfully logged out" %}.</p>
+    <img src="{% static 'img/bye.png' %}">
 {% endblock %}

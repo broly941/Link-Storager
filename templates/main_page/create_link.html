@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block title %}
-        Create link
+    Create link
+{% endblock %}
+
+{% block page_header %}
+    <h1>Create Link</h1>
+    <hr class="small">
+    <span class="subheading">Something clever</span>
 {% endblock %}
 
 {% block content %}
-    <h4>
-        <small>Создать ссылку</small>
-    </h4>
-    <hr>
 
     <form action="" method="POST">
         {% csrf_token %}
@@ -28,7 +30,8 @@
         <div class="form-group">
             <button
                 type="submit"
-                class="btn btn-success">Создать</button>
+                class="btn btn-primary">Create
+            </button>
         </div>
     </form>
 {% endblock content %}

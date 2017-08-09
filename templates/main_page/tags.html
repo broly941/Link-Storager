@@ -2,20 +2,21 @@
 {% load static %}
 
 {% block title %}
-        Tags
+    Tags
+{% endblock %}
+
+{% block page_header %}
+    <h1>Tags</h1>
+    <hr class="small">
+    <span class="subheading">Something clever</span>
 {% endblock %}
 
 {% block content %}
-    <h4>
-        <small>Теги</small>
-    </h4>
-    <hr>
     <div class="large_label">
         {% for tag in ordered_tags %}
-            <h5><a href="{% url 'tags_detail' pk=tag.pk %}"><span class="label label-success">{{ tag.name }}</span></a>
-            </h5>
+            <h3><a href="{% url 'tags_detail' pk=tag.pk %}"><span class="label label-success">{{ tag.name }}</span></a>
+            </h3>
         {% endfor %}
     </div>
-    <br><br>
 {% endblock content %}
 

@@ -11,7 +11,7 @@ def main_page(request):
     ordered_links = sorted(links, key=operator.attrgetter('created_date'), reverse=True)
     return render(request, 'main_page/main_page.html', locals())
 
-# @login_required(login_url='/login/')
+
 def create_link(request):
     tags = Tags.objects.all()
     ordered_tags = sorted(tags, key=operator.attrgetter('name'))

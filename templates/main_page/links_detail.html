@@ -1,27 +1,33 @@
 {% extends 'base.html' %}
 
 {% block title %}
-        Link detail
+    Link detail
+{% endblock %}
+
+{% block page_header %}
+    <h1>Link detail</h1>
+    <hr class="small">
+    <span class="subheading">{{ links.description|truncatechars_html:50 }}</span>
 {% endblock %}
 
 {% block content %}
-    <h4>
-        <small>Ссылка</small>
-    </h4>
-    <hr>
 
-    <h2><a href="{{ links.original }}"><span class="glyphicon glyphicon-scissors"></span> {{ links.shortcut }}</a></h2>
-    <h4><span class="glyphicon glyphicon-leaf"></span> {{ links.original }}</h4>
+    <div class="post-preview">
+        <a href="{{ links.shortcut }}"><h2 class="section-heading">{{ links.shortcut }}</h2></a>
 
+        <p class="post-meta">Posted by
+            <a href="/#">{{ links.author }}</a>
+            on {{ links.created_date }}
+        </p>
 
-    <h5><span class="glyphicon glyphicon-time"></span> Post by {{ links.created_date }} - <a
-        href="#">{{ links.author }}</a>
-    </h5>
+        <p>{{ links.description }}</p>
 
-    {% if link.tag %}
-        <h5><span class="label label-success">{{ link.tag }}</span></h5>
-        <br>
-    {% endif %}
-    <p>{{ links.description }}</p>
-    <br>
+        <blockquote>{{ links.original }}</blockquote>
+
+        {% if links.tag %}
+            <h3><span class="label label-success">{{ links.tag }}</span></h3>
+        {% endif %}
+
+    </div>
+
 {% endblock content %}

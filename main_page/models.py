@@ -22,7 +22,7 @@ class Links(models.Model):
     original = models.CharField(max_length=200)
     shortcut = models.CharField(max_length=200)
     description = models.TextField()
-    tag = models.ForeignKey(Tags, blank=True, null=False, default=None)
+    tag = models.ForeignKey(Tags, blank=True, null=True, default=None)
     created_date = models.DateTimeField(default=timezone.now)
 
     def get_tags(self):

@@ -10,13 +10,13 @@
     {% csrf_token %}
     {{ form|crispy }}
 
-    <input class="btn btn-primary" type="submit" value="{% trans 'Log in' %}" />
+    <input class="btn  btn-primary" type="submit" value="{% trans 'Log in' %}" />
     <br><br >
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-<p>{% trans "Забыли пароль?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Восстановить" %}</a>.</p>
-<p>{% trans "Не зарегистрированы?" %} <a href="{% url 'registration_register' %}">{% trans "Регистрация" %}</a>.</p>
+<p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Restore" %}</a>.</p>
+<p>{% trans "Not registered?" %} <a href="{% url 'registration_register' %}">{% trans "Check in" %}</a>.</p>
 {% endblock %}
 
 
