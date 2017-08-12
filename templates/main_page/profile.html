@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block page_header %}
+    <h1>Profile</h1>
+    <hr class="small">
+    <span class="subheading">Hi, {{ profile.username }}!</span>
+{% endblock %}
+
+{% block content %}
+    {#    <div class="row panel">#}
+    {#        <div class="col-md-8  col-xs-12">#}
+    {#                <img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg"#}
+    {#                     class="img-thumbnail picture hidden-xs"/>#}
+    {##}
+    {#            <div class="header">#}
+    {#                <h1>{{ profile.username }}</h1>#}
+    {##}
+    {#                <p>Administrator: {{ profile.is_superuser }}</p>#}
+    {##}
+    {#                <p>Data joined: <strong>{{ profile.date_joined }}</strong></p>#}
+    {##}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    {##}
+    {#    <div class="row nav">#}
+    {##}
+    {#    <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px; text-align: center">#}
+    {#        <div class="col-md-4 col-xs-4 well"><i class="fa fa-paper-plane-o fa-lg"></i> {{ links|length }}</div>#}
+    {#    </div>#}
+
+
+
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive"/>
+        </div>
+        <div class="col-sm-6 col-md-8">
+            <h4>{{ profile.username|title }}</h4>
+            <small><cite title="San Francisco, USA">... <i
+                class="glyphicon glyphicon-map-marker">
+            </i></cite></small>
+            <p>
+                <i class="glyphicon glyphicon-envelope"></i>{{ profile.email }}
+                <br/>
+                <i class="glyphicon glyphicon-calendar"></i>Join <strong>{{ profile.date_joined }}</strong>
+            </p>
+
+            <div style="text-align: center; margin-top: 75px">
+                <a href="/profile/links"><div class="col-md-4 col-xs-4 well"><i class="fa fa-paper-plane-o fa-lg"></i> {{ length }}</div></a>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .glyphicon {
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+
+        small {
+            display: block;
+            line-height: 1.428571429;
+            color: #999;
+        }
+    </style>
+{% endblock content %}
+

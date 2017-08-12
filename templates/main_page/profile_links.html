@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Profile links
+{% endblock %}
+
+{% block page_header %}
+    <h1>Profile links</h1>
+    <hr class="small">
+    <span class="subheading">Page {{ links.number }} of {{ links.paginator.num_pages }}</span>
+{% endblock %}
+
+{% block content %}
+    {% for link in links %}
+        <div class="post-preview">
+            <a href="{% url 'links_detail' pk=link.pk %}">
+                <h2 class="post-title">
+                    {{ link.shortcut }}
+                </h2>
+                <h3 class="post-subtitle">
+                    {{ link.description }}
+                </h3>
+            </a>
+            <p class="post-meta">Posted on {{ link.created_date }}</p>
+            {% if link.tag %}
+                <h4><span class="label label-success">{{ link.tag }}</span></h4>
+            {% endif %}
+        </div>
+        <hr>
+    {% endfor %}
+
+    <ul class="pager">
+        {% if links.has_previous %}
+            <li class="previous"><a href="?page={{ links.previous_page_number }}">previous</a></li>
+        {% endif %}
+
+        {% if links.has_next %}
+            <li class="next"><a href="?page={{ links.next_page_number }}">next</a></li>
+        {% endif %}
+    </ul>
+{% endblock content %}
+

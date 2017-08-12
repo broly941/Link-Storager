@@ -8,4 +8,6 @@ urlpatterns = [
     url(r'^tags/$', views.tags, name='tags'),
     url(r'^tags/(?P<pk>[0-9]+)/$', views.tags_detail, name='tags_detail'),
     url(r'^link/(?P<pk>[0-9]+)/$', views.links_detail, name='links_detail'),
+    url(r'^profile/$', views.profile_view, name='profile_view'),
+    url(r'^profile/links$', views.profile_links, name='profile_links'),
 ]

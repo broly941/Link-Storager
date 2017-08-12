@@ -15,18 +15,18 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="/create_link/">Create</a></li>
+                    <li><a href="/create_link">Create</a></li>
                     {% else %}
-                     <li><a href="/accounts/login/">Create</a></li>
+                     <li><a href="/accounts/login">Create</a></li>
                 {% endif %}
-                <li><a href="/tags/">Tags</a></li>
+                <li><a href="/tags">Tags</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="/profile">Profile</a></li>
                 {% endif %}
                 {% if not user.is_authenticated %}
-                    <li><a href="/accounts/login/"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
+                    <li><a href="/accounts/login"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
                 {% else %}
-                    <li><a href="/accounts/logout/"><i class="glyphicon glyphicon-user"></i> Sign out</a></li>
+                    <li><a href="/accounts/logout"><i class="glyphicon glyphicon-user"></i> Sign out</a></li>
                 {% endif %}
             </ul>
         </div>
