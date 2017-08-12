@@ -2,48 +2,26 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %}LogIn{% endblock %}
-
-{% block content %}
-    <br>
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form|crispy }}
-
-    <input class="btn  btn-primary" type="submit" value="{% trans 'Log in' %}" />
-    <br><br >
-    <input type="hidden" name="next" value="{{ next }}" />
-</form>
-
-<p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Restore" %}</a>.</p>
-<p>{% trans "Not registered?" %} <a href="{% url 'registration_register' %}">{% trans "Check in" %}</a>.</p>
+{% block title %}
+    LogIn
 {% endblock %}
 
+{% block page_header %}
+    <h1>Sign In</h1>
+    <hr class="small">
+    <span class="subheading">Something clever</span>
+{% endblock %}
 
-{% comment %}
-**registration/login.html**
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form|crispy }}
 
-It's your responsibility to provide the login form in a template called
-registration/login.html by default. This template gets passed four
-template context variables:
+        <input class="btn  btn-primary" type="submit" value="{% trans 'Log in' %}"/>
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
 
-``form``
-    A Form object representing the login form. See the forms
-    documentation for more on Form objects.
-
-``next``
-    The URL to redirect to after successful login. This may contain a
-    query string, too.
-
-``site``
-    The current Site, according to the SITE_ID setting. If you don't
-    have the site framework installed, this will be set to an instance
-    of RequestSite, which derives the site name and domain from the
-    current HttpRequest.
-
-``site_name``
-    An alias for site.name. If you don't have the site framework
-    installed, this will be set to the value of
-    request.META['SERVER_NAME']. For more on sites, see The
-    "sites" framework.
-{% endcomment %}
+{#    <p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Restore" %}</a>.</p>#}
+    <p>{% trans "Not registered?" %} <a href="{% url 'registration_register' %}">{% trans "Check in" %}</a>.</p>
+    <hr>
+{% endblock %}

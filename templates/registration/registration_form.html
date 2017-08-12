@@ -6,6 +6,12 @@
     {% trans "Registration" %}
 {% endblock %}
 
+{% block page_header %}
+    <h1>Registration</h1>
+    <hr class="small">
+    <span class="subheading">Something clever</span>
+{% endblock %}
+
 {% block content %}
 <form method="post" action="">
     {% csrf_token %}

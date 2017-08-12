@@ -16,6 +16,8 @@
                 <li><a href="/">Home</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="/create_link/">Create</a></li>
+                    {% else %}
+                     <li><a href="/accounts/login/">Create</a></li>
                 {% endif %}
                 <li><a href="/tags/">Tags</a></li>
                 {% if user.is_authenticated %}

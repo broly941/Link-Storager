@@ -4,11 +4,25 @@ from django.utils import timezone
 from .models import Links, Tags
 from .forms import LinksForm
 from main_page.google_api import google_url_shorten
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def main_page(request):
-    links = Links.objects.all()
-    ordered_links = sorted(links, key=operator.attrgetter('created_date'), reverse=True)
+    links_list = Links.objects.all()
+    ordered_links = sorted(links_list, key=operator.attrgetter('created_date'), reverse=True)
+
+    paginator = Paginator(ordered_links, 4)
+    page = request.GET.get('page')
+
+    try:
+        links = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        links = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        links = paginator.page(paginator.num_pages)
+
     return render(request, 'main_page/main_page.html', locals())
 
 
@@ -38,7 +52,19 @@ def tags(request):
 
 def tags_detail(request, pk):
     tags = get_object_or_404(Tags, pk=pk)
-    links = Links.objects.all()
+    links_list = Links.objects.filter(tag=pk)
+
+    paginator = Paginator(links_list, 4)
+    page = request.GET.get('page')
+
+    try:
+        links = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        links = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        links = paginator.page(paginator.num_pages)
     return render(request, 'main_page/tags_detail.html', locals())
 
 
